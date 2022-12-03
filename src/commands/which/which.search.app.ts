@@ -25,7 +25,7 @@ class WhichSearch extends AppCommand {
         }).then((res) => {
             const data = res.data;
             if (data.results) {
-                if (data.results[0].header.similarity > 85) {
+                if (data.results[0].header.similarity > 80) {
                     session.send(`.pixiv detail ${data.results[0].data.pixiv_id}`);
                 } else {
                     session.reply("没有找到可信结果");

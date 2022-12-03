@@ -26,7 +26,7 @@ bot.on("imageMessage", (event) => {
     }).then((res) => {
         const data = res.data;
         if (data.results) {
-            if (data.results[0].header.similarity > 85) {
+            if (data.results[0].header.similarity > 80) {
                 bot.logger.info(`${event.content} | Found ${data.results[0].data.pixiv_id}, similarity ${data.results[0].header.similarity}`);
                 bot.API.message.create(9, event.channelId, `.pixiv detail ${data.results[0].data.pixiv_id}`, event.msgId);
             } else {
