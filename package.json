@@ -24,6 +24,7 @@
   "homepage": "https://github.com/Hexona69/kook-setu-which#readme",
   "dependencies": {
     "axios": "^1.2.0",
+    "kasumi.js": "^0.1.0",
     "kbotify": "^0.2.5",
     "ts-node": "^10.9.1"
   },

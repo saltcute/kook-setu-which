@@ -1,14 +1,14 @@
-import { AppCommand, AppFunc, BaseSession } from 'kbotify';
+import { BaseCommand, CommandFunction, BaseSession } from 'kasumi.js';
 import axios from 'axios';
 import auth from 'configs/auth';
 import { bot } from 'init/client';
 
-class WhichSearch extends AppCommand {
+class WhichSearch extends BaseCommand {
     code = 'search'; // 只是用作标记
     trigger = 'search'; // 用于触发的文字
     help = '`.echo kmd 内容`'; // 帮助文字
     intro = '复读你所说的文字, 并用kmarkdown格式返回。';
-    func: AppFunc<BaseSession> = async (session) => {
+    func: CommandFunction<BaseSession, any> = async (session) => {
         axios({
             url: "https://saucenao.com/search.php",
             method: "GET",

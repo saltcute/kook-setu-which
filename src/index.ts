@@ -9,7 +9,7 @@ bot.logger.addStream({
     stream: process.stdout
 })
 
-bot.on("imageMessage", (event) => {
+bot.message.on('imageMessages', (event) => {
     axios({
         url: "https://saucenao.com/search.php",
         method: "GET",
@@ -28,7 +28,7 @@ bot.on("imageMessage", (event) => {
         if (data.results) {
             if (data.results[0].header.similarity > 80) {
                 bot.logger.info(`${event.content} | Found ${data.results[0].data.pixiv_id}, similarity ${data.results[0].header.similarity}`);
-                bot.API.message.create(9, event.channelId, `.pixiv detail ${data.results[0].data.pixiv_id}`, event.msgId, "429949279");
+                bot.API.message.create(9, event.channelId, `.pixiv detail ${data.results[0].data.pixiv_id}`, event.messageId, "429949279");
             } else {
                 bot.logger.info(event.content + "| Not enough similarity");
             }
@@ -38,7 +38,7 @@ bot.on("imageMessage", (event) => {
     })
 })
 
-bot.addCommands(whichMenu);
+bot.plugin.load(whichMenu);
 
 bot.connect();
 
